@@ -3,34 +3,38 @@ import React from 'react'
 
 import AvatarImage from '../../components/AvatarImage'
 import TextComponent from '../../components/TextComponent'
+import { COLORS } from '../../../constants'
 
-const PopularCreatorList = ({ data }) => {
+const RecentRecipeList = ({ data }) => {
 	return (
 		<FlatList
 			horizontal
 			showsHorizontalScrollIndicator={false}
 			data={data}
 			renderItem={({ item }) => (
-				<TouchableOpacity className="mr-3">
+				<TouchableOpacity className="w-[124px] mr-4">
 					<AvatarImage
 						url={item.image}
-						className="h-[75px] w-[75px] rounded-full"
+						className="w-full h-[124px] rounded-xl"
 					/>
+					<TextComponent type="h4" additionalClassName="mt-2">
+						{item.title}
+					</TextComponent>
 					<TextComponent
-						type="h5"
-						additionalClassName="max-w-[75px] text-center mt-2"
+						type="sm"
+						additionalClassName="mt-2"
+						customStyle={{ color: COLORS.neutral40 }}
 					>
-						{item.name}
+						By {item.author}
 					</TextComponent>
 				</TouchableOpacity>
 			)}
 			keyExtractor={item => item.id}
 			contentContainerStyle={{
 				paddingLeft: 20,
-				marginBottom: 20,
 			}}
 		/>
 	)
 }
 
-export default PopularCreatorList
+export default RecentRecipeList

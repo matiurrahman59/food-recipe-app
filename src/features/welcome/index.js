@@ -1,6 +1,5 @@
-import { View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
 
@@ -8,6 +7,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { Images } from '../../../constants'
 import { COLORS } from '../../../constants'
 import TextComponent from '../../components/TextComponent'
+import { useNavigation } from '@react-navigation/native'
 
 const index = () => {
 	const navigation = useNavigation()

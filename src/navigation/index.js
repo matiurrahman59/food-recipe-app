@@ -14,6 +14,8 @@ import FavoriteScreen from '../screens/FavoriteScreen'
 import NotificationScreen from '../screens/NotificationScreen'
 import { TabBarAdvancedButton } from '../components/TabBarAdvancedButton'
 import { COLORS } from '../../constants'
+import Icon from '../components/Icon'
+import TextComponent from '../components/TextComponent'
 
 const Stack = createStackNavigator()
 const BottomBar = createBottomTabNavigator()
@@ -86,8 +88,18 @@ const TabBar = () => {
 				name="Profile"
 				component={ProfileScreen}
 				options={{
+					headerShown: true,
+					headerTitle: '',
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="user" size={24} color={color} />
+					),
+					headerRight: () => (
+						<Icon name="more-horizontal" size={24} className="mr-5" />
+					),
+					headerLeft: () => (
+						<TextComponent type="h1" additionalClassName="ml-5">
+							My profile
+						</TextComponent>
 					),
 				}}
 			/>
@@ -101,10 +113,24 @@ export const Navigator = () => {
 			<Stack.Navigator
 				screenOptions={{
 					headerShown: false,
+					headerStyle: {
+						elevation: 0,
+					},
 				}}
 			>
 				<Stack.Screen name="Onboarding" component={OnboardingScreen} />
 				<Stack.Screen name="Tab" component={TabBar} />
+				<Stack.Screen
+					name="RecipeDetails"
+					component={RecipeDetailsScreen}
+					options={{
+						headerShown: true,
+						headerTitle: '',
+						headerRight: () => (
+							<Icon name="more-horizontal" size={24} className="mr-5" />
+						),
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)

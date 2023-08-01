@@ -15,6 +15,10 @@ export const recipe7 = require('../assets/images/recipe7.png')
 export const category1 = require('../assets/images/category1.png')
 export const category2 = require('../assets/images/category2.png')
 
+export const recentRecipe1 = require('../assets/images/recent1.png')
+export const recentRecipe2 = require('../assets/images/recent2.png')
+export const recentRecipe3 = require('../assets/images/recent3.png')
+
 export const Images = {
 	onBoardingImage,
 	user1,
@@ -30,4 +34,7 @@ export const Images = {
 	recipe7,
 	category1,
 	category2,
+	recentRecipe1,
+	recentRecipe2,
+	recentRecipe3,
 }

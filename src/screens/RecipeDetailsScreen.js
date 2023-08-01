@@ -1,12 +1,9 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import RecipeDetails from '../features/foodRecipe/RecipeDetails'
 
-const RecipeDetailsScreen = () => {
-	return (
-		<View>
-			<Text>RecipeDetailsScreen</Text>
-		</View>
-	)
+const RecipeDetailsScreen = ({ route }) => {
+	const item = route.params
+	return <RecipeDetails item={item} />
 }
 
 export default RecipeDetailsScreen

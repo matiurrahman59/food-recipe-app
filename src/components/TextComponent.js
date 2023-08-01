@@ -8,8 +8,9 @@ const TextComponent = ({
 	customStyle,
 	additionalClassName,
 }) => {
-	const base = 'font-poppins text-base leading-[22.4px]'
+	const base = 'font-poppins text-base'
 	const bold = 'font-poppinsBold text-[56px] leading-[67px]'
+	const sm = 'font-poppins text-[10px]'
 
 	const h1 = 'font-poppinsBold text-2xl leading-[28.8px]'
 	const h2 = 'font-poppinsBold text-xl'
@@ -20,6 +21,7 @@ const TextComponent = ({
 	const styles = {
 		base,
 		bold,
+		sm,
 		h1,
 		h2,
 		h3,
