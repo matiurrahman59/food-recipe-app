@@ -88,18 +88,8 @@ const TabBar = () => {
 				name="Profile"
 				component={ProfileScreen}
 				options={{
-					headerShown: true,
-					headerTitle: '',
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="user" size={24} color={color} />
-					),
-					headerRight: () => (
-						<Icon name="more-horizontal" size={24} className="mr-5" />
-					),
-					headerLeft: () => (
-						<TextComponent type="h1" additionalClassName="ml-5">
-							My profile
-						</TextComponent>
 					),
 				}}
 			/>

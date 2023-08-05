@@ -24,6 +24,7 @@ const SliderItem = ({ index }) => {
 	return (
 		<View>
 			<FlatList
+				showsVerticalScrollIndicator={false}
 				data={trendingRecipes}
 				renderItem={({ item }) => (
 					<View

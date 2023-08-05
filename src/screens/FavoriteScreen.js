@@ -1,12 +1,6 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-
+import Favorite from '../features/favorite'
 const FavoriteScreen = () => {
-	return (
-		<View>
-			<Text>FavoriteScreen</Text>
-		</View>
-	)
+	return <Favorite />
 }
 
 export default FavoriteScreen

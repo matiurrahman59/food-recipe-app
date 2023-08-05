@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image, TouchableOpacity } from 'react-native'
+import { View, Image, TouchableOpacity, Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
 
@@ -33,6 +33,7 @@ const index = () => {
 					>
 						60k+ {``}
 					</TextComponent>
+
 					<TextComponent
 						type="base"
 						customStyle={{

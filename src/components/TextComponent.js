@@ -7,6 +7,7 @@ const TextComponent = ({
 	type,
 	customStyle,
 	additionalClassName,
+	...restProps
 }) => {
 	const base = 'font-poppins text-base'
 	const bold = 'font-poppinsBold text-[56px] leading-[67px]'
@@ -37,8 +38,9 @@ const TextComponent = ({
 					{
 						color: COLORS.neutral90,
 					},
-					{ ...customStyle },
+					customStyle,
 				]}
+				{...restProps}
 			>
 				{children}
 			</Text>

@@ -1,7 +1,7 @@
 import React from 'react'
-import TouchableButton from '../../components/TouchableButton'
-import TextComponent from '../../components/TextComponent'
-import { COLORS } from '../../../constants'
+import TouchableButton from './TouchableButton'
+import TextComponent from './TextComponent'
+import { COLORS } from '../../constants'
 
 const TabbedButton = ({ label, index, currentSlideIndex, ...restProps }) => {
 	return (

@@ -49,6 +49,9 @@ export const COLORS = {
 	success10: '#EAF7EE',
 	success100: '#31B057',
 
+	// green
+	green10: '#CEECD7',
+
 	white: '#FFFFFF',
 	black: '#000',
 }

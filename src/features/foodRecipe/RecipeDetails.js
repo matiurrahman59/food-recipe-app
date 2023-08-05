@@ -1,6 +1,9 @@
-import { View, ScrollView, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Pressable } from 'react-native'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import { useRef, useState } from 'react'
+import { Video, ResizeMode } from 'expo-av'
 
+import { VIDEO_URL } from '@env'
 import { COLORS } from '../../../constants'
 import TextComponent from '../../components/TextComponent'
 import AvatarImage from '../../components/AvatarImage'
@@ -8,29 +11,62 @@ import TouchableButton from '../../components/TouchableButton'
 import { ingredientLists } from '../../../constants/data'
 
 const RecipeDetails = ({ item }) => {
+	const [showVideo, setShowVideo] = useState(null)
+	const videoRef = useRef(null)
+
+	const playRecipeVideo = () => {
+		setShowVideo(true)
+		videoRef.current.playAsync()
+	}
+
 	return (
 		<ScrollView className="flex-1" style={{ backgroundColor: COLORS.white }}>
 			<View className="mx-5 mb-5">
+				{/* recipe title */}
 				<TextComponent type="h1" additionalClassName="w-[90%]">
 					{item.title}
 				</TextComponent>
+
+				{/* recipe video container */}
 				<View className="space-y-4">
-					{/* item video */}
-					<View className="relative items-center justify-center">
-						<AvatarImage
-							url={item.image}
-							resizeMode="contain"
-							className="mt-6 w-full h-[200px] rounded-xl"
-						/>
-						<TouchableOpacity
-							onPress={() => console.log('play video')}
-							className="absolute h-12 w-12 items-center justify-center rounded-full"
-							style={{
-								backgroundColor: 'rgba(48, 48, 48, 0.30)',
-							}}
+					<View className="relative mt-6 h-[200px]">
+						{/* Video thumbnail */}
+						<Pressable
+							onPress={playRecipeVideo}
+							className={`h-full absolute w-full items-center justify-center ${
+								showVideo ? '-z-10' : 'z-10'
+							}`}
 						>
-							<FontAwesome name="play" size={20} color={COLORS.white} />
-						</TouchableOpacity>
+							<AvatarImage
+								url={item.image}
+								resizeMode="contain"
+								className="w-full h-full rounded-xl"
+							/>
+							<View
+								className="absolute h-12 w-12 items-center justify-center rounded-full"
+								style={{
+									backgroundColor: 'rgba(48, 48, 48, 0.30)',
+								}}
+							>
+								<FontAwesome name="play" size={20} color={COLORS.white} />
+							</View>
+						</Pressable>
+
+						{/* Video player */}
+						<View className="h-full w-full absolute rounded-xl overflow-hidden">
+							<Video
+								ref={videoRef}
+								source={{
+									uri: VIDEO_URL,
+								}}
+								style={{
+									width: '100%',
+									height: '100%',
+								}}
+								useNativeControls
+								resizeMode={ResizeMode.CONTAIN}
+							/>
+						</View>
 					</View>
 
 					{/*item rating */}
