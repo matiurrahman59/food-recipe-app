@@ -1,5 +1,6 @@
 import { View } from 'react-native'
-import React from 'react'
+
+// internal imports
 import TextComponent from '../../components/TextComponent'
 
 const UserInfo = ({ title, value }) => {

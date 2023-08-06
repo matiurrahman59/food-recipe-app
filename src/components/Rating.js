@@ -1,5 +1,4 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 import TextComponent from './TextComponent'

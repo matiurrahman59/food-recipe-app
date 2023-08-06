@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Feather } from '@expo/vector-icons'
 
+// internal imports
 import OnboardingScreen from '../screens/OnboardingScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ProfileScreen from '../screens/ProfileScreen'
@@ -15,7 +16,6 @@ import NotificationScreen from '../screens/NotificationScreen'
 import { TabBarAdvancedButton } from '../components/TabBarAdvancedButton'
 import { COLORS } from '../../constants'
 import Icon from '../components/Icon'
-import TextComponent from '../components/TextComponent'
 
 const Stack = createStackNavigator()
 const BottomBar = createBottomTabNavigator()

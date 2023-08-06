@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native'
-import React from 'react'
+
 import { COLORS, DEVICE } from '../../constants'
 
 const SafeArea = ({ children }) => {

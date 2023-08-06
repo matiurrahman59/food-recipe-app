@@ -1,6 +1,7 @@
 import { FlatList, View } from 'react-native'
-import React from 'react'
+import Animated, { FadeInRight } from 'react-native-reanimated'
 
+// internal imports
 import { COLORS } from '../../../constants'
 import AvatarImage from '../../components/AvatarImage'
 import { trendingRecipes } from '../../../constants/data'
@@ -11,7 +12,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import TextComponent from '../../components/TextComponent'
 
 const SliderItem = ({ index }) => {
-	if (index == 0) {
+	if (index == 1) {
 		return (
 			<View className="items-center mt-10 justify-center">
 				<TextComponent type="h2" customStyle={{ color: COLORS.error10 }}>
@@ -27,8 +28,9 @@ const SliderItem = ({ index }) => {
 				showsVerticalScrollIndicator={false}
 				data={trendingRecipes}
 				renderItem={({ item }) => (
-					<View
+					<Animated.View
 						key={item.id}
+						entering={FadeInRight.duration(500).delay(item.id * 620)}
 						className="relative mb-4 h-[200px] rounded-xl overflow-hidden"
 					>
 						<View>
@@ -65,7 +67,7 @@ const SliderItem = ({ index }) => {
 								12 Ingredients | {item.duration}
 							</TextComponent>
 						</View>
-					</View>
+					</Animated.View>
 				)}
 			/>
 		</View>

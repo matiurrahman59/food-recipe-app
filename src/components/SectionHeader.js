@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { AntDesign as Icon } from '@expo/vector-icons'
+import { View } from 'react-native'
 
 import TextComponent from './TextComponent'
 import TouchableButton from './TouchableButton'
 import { COLORS } from '../../constants'
+import Icon from './Icon'
 
 const SectionHeader = ({ label, onPress, button }) => {
 	return (
@@ -23,7 +22,7 @@ const SectionHeader = ({ label, onPress, button }) => {
 					>
 						See all
 					</TextComponent>
-					<Icon name="arrowright" size={20} color={COLORS.primary50} />
+					<Icon name="arrow-right" size={20} color={COLORS.primary50} />
 				</TouchableButton>
 			)}
 		</View>

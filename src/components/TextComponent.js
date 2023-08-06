@@ -1,5 +1,4 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Text } from 'react-native'
 import { COLORS } from '../../constants'
 
 const TextComponent = ({
@@ -31,20 +30,18 @@ const TextComponent = ({
 	}
 
 	return (
-		<View>
-			<Text
-				className={`${styles[type]} ${additionalClassName}`}
-				style={[
-					{
-						color: COLORS.neutral90,
-					},
-					customStyle,
-				]}
-				{...restProps}
-			>
-				{children}
-			</Text>
-		</View>
+		<Text
+			className={`${styles[type]}  ${additionalClassName}`}
+			style={[
+				{
+					color: COLORS.neutral90,
+				},
+				customStyle,
+			]}
+			{...restProps}
+		>
+			{children}
+		</Text>
 	)
 }
 

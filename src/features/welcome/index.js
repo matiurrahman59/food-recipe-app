@@ -1,25 +1,24 @@
-import React from 'react'
-import { View, Image, TouchableOpacity, Text } from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 // internal imports
 import { Images } from '../../../constants'
 import { COLORS } from '../../../constants'
 import TextComponent from '../../components/TextComponent'
-import { useNavigation } from '@react-navigation/native'
 
 const index = () => {
 	const navigation = useNavigation()
 	return (
 		<View className="flex-1 relative">
-			<LinearGradient
-				colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']}
-				className="absolute h-1/2 w-full bottom-0 z-10"
-			/>
 			<Image
 				source={Images.onBoardingImage}
 				className="absolute h-full w-full object-cover z-0"
+			/>
+			<LinearGradient
+				colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']}
+				className="absolute h-1/2 w-full bottom-0 z-10"
 			/>
 			<View className="pt-10 items-center">
 				<View className="flex-row space-x-1 items-baseline">

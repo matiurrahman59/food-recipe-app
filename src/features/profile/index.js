@@ -1,6 +1,8 @@
 import { View, ScrollView, StyleSheet, FlatList } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
+import Animated, { FadeInUp } from 'react-native-reanimated'
 
+// internal imports
 import { COLORS, DEVICE, Images } from '../../../constants'
 import AvatarImage from '../../components/AvatarImage'
 import TouchableButton from '../../components/TouchableButton'
@@ -23,7 +25,7 @@ const DATA = [
 ]
 
 const Index = () => {
-	const [currentSlideIndex, setCurrentSlideIndex] = useState(1)
+	const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 	const ref = useRef()
 
 	useEffect(() => {
@@ -50,7 +52,10 @@ const Index = () => {
 				<HeaderTop title="My profile" iconName="more-horizontal" />
 				<View className="mx-5 mt-8">
 					{/* user photo */}
-					<View className="flex-row justify-between items-center">
+					<Animated.View
+						className="flex-row justify-between items-center"
+						entering={FadeInUp.duration(500).delay(120)}
+					>
 						<AvatarImage
 							url={Images.user1}
 							className="h-[100px] w-[100px] rounded-full"
@@ -68,28 +73,35 @@ const Index = () => {
 								Edit profile
 							</TextComponent>
 						</TouchableButton>
-					</View>
+					</Animated.View>
 
 					{/* user name and description */}
 					<View className="mt-4">
-						<TextComponent type="h1">Alessandra Blair</TextComponent>
-						<TextComponent
-							type="h4"
-							additionalClassName="font-poppins w-[80%] mt-3"
-							customStyle={{ color: COLORS.neutral40 }}
-						>
-							Hello world I’m Alessandra Blair, I’m from Italy 🇮🇹 I love cooking
-							so much!
-						</TextComponent>
+						<Animated.View entering={FadeInUp.duration(500).delay(220)}>
+							<TextComponent type="h1">Alessandra Blair</TextComponent>
+						</Animated.View>
+						<Animated.View entering={FadeInUp.duration(500).delay(320)}>
+							<TextComponent
+								type="h4"
+								additionalClassName="font-poppins w-[80%] mt-3"
+								customStyle={{ color: COLORS.neutral40 }}
+							>
+								Hello world I’m Alessandra Blair, I’m from Italy 🇮🇹 I love
+								cooking so much!
+							</TextComponent>
+						</Animated.View>
 					</View>
 
 					{/* user recipe details */}
-					<View className="my-5 flex-row justify-between items-center">
+					<Animated.View
+						className="my-5 flex-row justify-between items-center"
+						entering={FadeInUp.duration(500).delay(420)}
+					>
 						<UserInfo title="Recipe" value={3} />
 						<UserInfo title="Videos" value={13} />
 						<UserInfo title="Followers" value="14k" />
 						<UserInfo title="Following" value="120" />
-					</View>
+					</Animated.View>
 				</View>
 
 				{/* thick line */}
@@ -102,22 +114,28 @@ const Index = () => {
 
 				{/* video & recipe tabbed button*/}
 				<View className="flex-row items-center mx-4 mt-3 mb-8 space-x-4">
-					<View className="flex-1">
+					<Animated.View
+						className="flex-1"
+						entering={FadeInUp.duration(500).delay(620)}
+					>
 						<TabbedButton
-							label="Video"
+							label="Recipe"
 							index={0}
 							currentSlideIndex={currentSlideIndex}
 							onPress={() => selectSlide(0)}
 						/>
-					</View>
-					<View className="flex-1">
+					</Animated.View>
+					<Animated.View
+						className="flex-1"
+						entering={FadeInUp.duration(500).delay(520)}
+					>
 						<TabbedButton
-							label="Recipe"
+							label="Video"
 							index={1}
 							currentSlideIndex={currentSlideIndex}
 							onPress={() => selectSlide(1)}
 						/>
-					</View>
+					</Animated.View>
 				</View>
 
 				{/* user recipe details */}

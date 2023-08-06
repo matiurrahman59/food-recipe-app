@@ -1,6 +1,6 @@
-import React from 'react'
-import TouchableButton from './TouchableButton'
 import { Feather } from '@expo/vector-icons'
+
+import TouchableButton from './TouchableButton'
 
 const Icon = ({ name, size, color, ...restProps }) => {
 	return (

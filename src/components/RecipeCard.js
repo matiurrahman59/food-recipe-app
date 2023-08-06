@@ -1,5 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, TouchableOpacity, Image } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 import AvatarImage from './AvatarImage'
@@ -7,13 +6,19 @@ import Rating from './Rating'
 import Icon from './Icon'
 import { COLORS } from '../../constants'
 import TextComponent from './TextComponent'
+import BookmarkButton from './BookmarkButton'
 
 const RecipeCard = ({ item, ...restProps }) => {
 	return (
 		<TouchableOpacity {...restProps}>
 			<View className="relative items-center justify-center">
-				<AvatarImage
+				{/* <AvatarImage
 					url={item.image}
+					resizeMode="contain"
+					className="w-full h-[180px] rounded-xl"
+				/> */}
+				<Image
+					source={item.image}
 					resizeMode="contain"
 					className="w-full h-[180px] rounded-xl"
 				/>
@@ -22,16 +27,7 @@ const RecipeCard = ({ item, ...restProps }) => {
 				<Rating rating={item.rating} />
 
 				{/* bookmark icon */}
-				<Icon
-					onPress={() => console.log('bookmark-item')}
-					name="bookmark"
-					size={22}
-					className="absolute right-2 top-2 p-1.5 rounded-full"
-					color={COLORS.neutral90}
-					style={{
-						backgroundColor: COLORS.white,
-					}}
-				/>
+				<BookmarkButton recipe={item} />
 
 				{/* video duration */}
 				<View

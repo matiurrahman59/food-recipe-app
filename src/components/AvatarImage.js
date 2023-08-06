@@ -1,5 +1,4 @@
-import { View, Image } from 'react-native'
-import React from 'react'
+import { Image } from 'react-native'
 
 const AvatarImage = ({ url, ...restProps }) => {
 	return <Image source={url} {...restProps} />

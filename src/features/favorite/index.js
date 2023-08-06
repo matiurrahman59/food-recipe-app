@@ -1,14 +1,22 @@
 import { View, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
+// internal imports
 import SafeArea from '../../components/SafeArea'
 import HeaderTop from '../../components/HeaderTop'
 import TabbedButton from '../../components/TabbedButton'
-import { trendingRecipes } from '../../../constants/data'
 import RecipeCard from '../../components/RecipeCard'
+import { FavoritesContext } from '../../services/favorites/favoritesContext'
+import TextComponent from '../../components/TextComponent'
+import { COLORS } from '../../../constants'
 
 const Index = () => {
+	const navigation = useNavigation()
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+
+	const { favorites } = useContext(FavoritesContext)
+
 	return (
 		<SafeArea>
 			<ScrollView>
@@ -35,10 +43,27 @@ const Index = () => {
 						</View>
 					</View>
 
+					<View>
+						{!favorites.length && (
+							<View className="items-center mt-10 justify-center">
+								<TextComponent
+									type="h2"
+									customStyle={{ color: COLORS.error10 }}
+								>
+									You don't have any favorites!
+								</TextComponent>
+							</View>
+						)}
+					</View>
+
 					{/* bookmark recipe items */}
-					{trendingRecipes.map(item => (
+					{favorites.map(item => (
 						<View key={item.id}>
-							<RecipeCard item={item} className="w-full mb-3" />
+							<RecipeCard
+								item={item}
+								className="w-full mb-3"
+								onPress={() => navigation.navigate('RecipeDetails', item)}
+							/>
 						</View>
 					))}
 				</View>

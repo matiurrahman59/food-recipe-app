@@ -1,4 +1,3 @@
-import React from 'react'
 import TouchableButton from './TouchableButton'
 import TextComponent from './TextComponent'
 import { COLORS } from '../../constants'

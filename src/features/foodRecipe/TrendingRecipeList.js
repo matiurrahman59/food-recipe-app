@@ -1,15 +1,12 @@
 import { FlatList } from 'react-native'
-import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import Animated, { FadeInRight } from 'react-native-reanimated'
 
+// internal imports
 import RecipeCard from '../../components/RecipeCard'
 
 const TrendingRecipeList = ({ data }) => {
 	const navigation = useNavigation()
-
-	const onPress = item => {
-		navigation.navigate('RecipeDetails', item)
-	}
 
 	return (
 		<FlatList
@@ -22,11 +19,15 @@ const TrendingRecipeList = ({ data }) => {
 			}}
 			keyExtractor={item => item.id}
 			renderItem={({ item }) => (
-				<RecipeCard
-					item={item}
-					className="w-[280px] mr-4"
-					onPress={() => onPress(item)}
-				/>
+				<Animated.View
+					entering={FadeInRight.duration(500).delay(item.id * 220)}
+				>
+					<RecipeCard
+						item={item}
+						className="w-[280px] mr-4"
+						onPress={() => navigation.navigate('RecipeDetails', item)}
+					/>
+				</Animated.View>
 			)}
 		/>
 	)

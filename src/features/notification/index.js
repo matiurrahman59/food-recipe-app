@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React, { useState } from 'react'
-import { COLORS } from '../../../constants'
+import Animated, { FadeInUp } from 'react-native-reanimated'
+
+// internal imports
 import TabbedButton from '../../components/TabbedButton'
 import SafeArea from '../../components/SafeArea'
 import TextComponent from '../../components/TextComponent'
-import Icon from '../../components/Icon'
 import HeaderTop from '../../components/HeaderTop'
 import NotificationMessage from '../../components/NotificationMessage'
 
@@ -47,15 +48,15 @@ const Index = () => {
 				<View className="mt-6">
 					<TextComponent type="h4">Today</TextComponent>
 					<View className="space-y-3 mt-3">
-						<View>
+						<Animated.View entering={FadeInUp.duration(600).delay(120)}>
 							<NotificationMessage label="New recipe" mark={true} />
-						</View>
-						<View>
+						</Animated.View>
+						<Animated.View entering={FadeInUp.duration(600).delay(220)}>
 							<NotificationMessage
 								label="Don't forget to saved your recipe"
 								mark={true}
 							/>
-						</View>
+						</Animated.View>
 					</View>
 				</View>
 
@@ -63,12 +64,12 @@ const Index = () => {
 				<View className="mt-6">
 					<TextComponent type="h4">Yesterday</TextComponent>
 					<View className="space-y-3 mt-3">
-						<View>
+						<Animated.View entering={FadeInUp.duration(600).delay(320)}>
 							<NotificationMessage label="New recipe" />
-						</View>
-						<View>
+						</Animated.View>
+						<Animated.View entering={FadeInUp.duration(600).delay(420)}>
 							<NotificationMessage label="Don't forget to saved your recipe" />
-						</View>
+						</Animated.View>
 					</View>
 				</View>
 			</View>

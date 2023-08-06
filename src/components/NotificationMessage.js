@@ -1,5 +1,4 @@
 import { View } from 'react-native'
-import React from 'react'
 
 import { COLORS } from '../../constants'
 import TextComponent from './TextComponent'

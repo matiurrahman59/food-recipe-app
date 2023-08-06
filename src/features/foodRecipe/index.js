@@ -1,6 +1,8 @@
 import { View, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
+import Animated, { FadeInUp } from 'react-native-reanimated'
 
+// internal imports
 import SafeArea from '../../components/SafeArea'
 import HeadingText from '../../components/HeadingText'
 import SectionHeader from '../../components/SectionHeader'
@@ -26,14 +28,20 @@ const Index = () => {
 	return (
 		<SafeArea>
 			<ScrollView className="mb-12 ">
-				<HeadingText>Find best recipes for cooking</HeadingText>
+				<View>
+					<HeadingText>Find best recipes for cooking</HeadingText>
+				</View>
 
 				{/* search bar */}
-				<SearchInput setQuery={setQuery} />
+				<View>
+					<SearchInput setQuery={setQuery} />
+				</View>
 
 				{/* Trending recipe section */}
 				<View className="mt-5">
-					<SectionHeader label="Trending now 🔥" button={true} />
+					<View>
+						<SectionHeader label="Trending now 🔥" button={true} />
+					</View>
 					<View className="mt-4">
 						<TrendingRecipeList data={trendingRecipes} />
 					</View>
@@ -41,8 +49,10 @@ const Index = () => {
 
 				{/* Popular recipe section */}
 				<View className="pt-6">
-					<SectionHeader label="Popular category" />
-					<View className="mt-4 space-x-3">
+					<View entering={FadeInUp.duration(500).delay(400)}>
+						<SectionHeader label="Popular category" />
+					</View>
+					<View className="pt-4 space-x-3">
 						<FlatList
 							horizontal
 							showsHorizontalScrollIndicator={false}
@@ -53,24 +63,28 @@ const Index = () => {
 							renderItem={({ item }) => {
 								const isActive = item.id === activeCategory
 								return (
-									<TouchableOpacity
-										onPress={() => setActiveCategory(item.id)}
-										className="py-2 px-3 mr-2 rounded-[10px]"
-										style={{
-											backgroundColor: isActive
-												? COLORS.primary50
-												: 'transparent',
-										}}
+									<Animated.View
+										entering={FadeInUp.duration(500).delay(item.id * 120)}
 									>
-										<TextComponent
-											type="h5"
-											customStyle={{
-												color: isActive ? COLORS.white : COLORS.primary30,
+										<TouchableOpacity
+											onPress={() => setActiveCategory(item.id)}
+											className="py-2 px-3 mr-2 rounded-[10px]"
+											style={{
+												backgroundColor: isActive
+													? COLORS.primary50
+													: 'transparent',
 											}}
 										>
-											{item.title}
-										</TextComponent>
-									</TouchableOpacity>
+											<TextComponent
+												type="h5"
+												customStyle={{
+													color: isActive ? COLORS.white : COLORS.primary30,
+												}}
+											>
+												{item.title}
+											</TextComponent>
+										</TouchableOpacity>
+									</Animated.View>
 								)
 							}}
 						/>
@@ -81,7 +95,9 @@ const Index = () => {
 
 				{/* Recent recipe section */}
 				<View className="mt-6">
-					<SectionHeader label="Recent recipe" button={true} />
+					<Animated.View entering={FadeInUp.duration(500).delay(400)}>
+						<SectionHeader label="Recent recipe" button={true} />
+					</Animated.View>
 					<View className="mt-4">
 						<RecentRecipeList data={recentRecipes} />
 					</View>

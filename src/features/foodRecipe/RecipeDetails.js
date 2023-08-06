@@ -2,7 +2,9 @@ import { View, ScrollView, Pressable } from 'react-native'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useRef, useState } from 'react'
 import { Video, ResizeMode } from 'expo-av'
+import Animated, { FadeInUp } from 'react-native-reanimated'
 
+// internal imports
 import { VIDEO_URL } from '@env'
 import { COLORS } from '../../../constants'
 import TextComponent from '../../components/TextComponent'
@@ -147,7 +149,8 @@ const RecipeDetails = ({ item }) => {
 				{/* ingredient details */}
 				<View className="mt-4 space-y-3">
 					{ingredientLists.map(item => (
-						<View
+						<Animated.View
+							entering={FadeInUp.duration(600).delay(item.id * 200)}
 							key={item.id}
 							className="rounded-xl px-4 py-3 flex-row justify-between items-center"
 							style={{ backgroundColor: COLORS.neutral10 }}
@@ -172,7 +175,7 @@ const RecipeDetails = ({ item }) => {
 							>
 								{item.quantity}
 							</TextComponent>
-						</View>
+						</Animated.View>
 					))}
 				</View>
 			</View>

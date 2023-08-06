@@ -1,5 +1,5 @@
-import { View, Text, TextInput } from 'react-native'
-import React from 'react'
+import { View, TextInput } from 'react-native'
+
 import { COLORS } from '../../constants'
 import Icon from './Icon'
 
