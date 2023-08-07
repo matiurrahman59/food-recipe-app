@@ -1,4 +1,4 @@
-import { View, Image, TouchableOpacity } from 'react-native'
+import { View, Image, TouchableOpacity, Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -22,25 +22,23 @@ const index = () => {
 			/>
 			<View className="pt-10 items-center">
 				<View className="flex-row space-x-1 items-baseline">
-					<AntDesign name="star" size={16} color={COLORS.white} />
-					<TextComponent
-						type="h3"
-						additionalClassName="ml-2"
-						customStyle={{
-							color: COLORS.white,
-						}}
-					>
-						60k+ {``}
-					</TextComponent>
+					<View className="mr-2">
+						<AntDesign name="star" size={16} color={COLORS.white} />
+					</View>
 
-					<TextComponent
-						type="base"
-						customStyle={{
-							color: COLORS.white,
-						}}
+					<Text
+						className="font-poppinsBold text-base leading-[22.4px]"
+						style={{ color: COLORS.white }}
+					>
+						60k+
+					</Text>
+
+					<Text
+						className="font-poppins text-base"
+						style={{ color: COLORS.white }}
 					>
 						Premium recipes
-					</TextComponent>
+					</Text>
 				</View>
 			</View>
 
